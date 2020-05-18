@@ -4,7 +4,7 @@
     <title>Google Classroom for Homeschool</title>
     <script>
       var GoogleAuth;
-      var SCOPE = 'https://www.googleapis.com/auth/classroom.coursework.me';
+      var SCOPE = 'https://www.googleapis.com/auth/classroom.coursework.me https://www.googleapis.com/auth/classroom.courses.readonly';
       function handleClientLoad() {
           // Load the API's client and auth2 modules.
           // Call the initClient function after the modules load.
@@ -41,6 +41,14 @@
               });
               $('#revoke-access-button').click(function() {
                   revokeAccess();
+              });
+              $('#list-courses-button').click(function() {
+                  const req = new XMLHttpRequest();
+                  req.addEventListener("load", function (e) {
+                      console.log("Response: ", req.response);
+                  });
+                  req.open("GET", "https://classroom.googleapis.com/v1/courses");
+                  req.send();
               });
           });
       }
@@ -88,6 +96,10 @@
             style="display: none; margin-left: 25px">Revoke access</button>
 
     <div id="auth-status" style="display: inline; padding-left: 25px"></div><hr>
+    <button id="list-courses-button">List Cources</button>
+    <div id="courses">
+      
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script async defer src="https://apis.google.com/js/api.js"
