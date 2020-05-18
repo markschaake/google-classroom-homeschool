@@ -5,6 +5,7 @@
     <script>
       var GoogleAuth;
       var SCOPE = 'https://www.googleapis.com/auth/classroom.coursework.me https://www.googleapis.com/auth/classroom.courses.readonly';
+      var API_KEY = 'AIzaSyAm8Kf28XBCjTLZlrXS0RbHWIDLZX2_PW0';
       function handleClientLoad() {
           // Load the API's client and auth2 modules.
           // Call the initClient function after the modules load.
@@ -20,7 +21,7 @@
           // Get API key and client ID from API Console.
           // 'scope' field specifies space-delimited list of access scopes.
           gapi.client.init({
-              'apiKey': 'AIzaSyAm8Kf28XBCjTLZlrXS0RbHWIDLZX2_PW0',
+              'apiKey': API_KEY,
               'clientId': '43222909467-rj3ovar4971hvqgvcg2ce01unepcojoe.apps.googleusercontent.com',
               'discoveryDocs': [discoveryUrl],
               'scope': SCOPE
@@ -47,7 +48,7 @@
                   req.addEventListener("load", function (e) {
                       console.log("Response: ", req.response);
                   });
-                  req.open("GET", "https://classroom.googleapis.com/v1/courses");
+                  req.open("GET", "https://classroom.googleapis.com/v1/courses?key=" + API_KEY);
                   req.send();
               });
           });
