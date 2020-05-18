@@ -4,7 +4,7 @@
     <title>Google Classroom for Homeschool</title>
     <script>
       var GoogleAuth;
-      var SCOPE = 'https://www.googleapis.com/auth/drive.metadata.readonly';
+      var SCOPE = 'https://www.googleapis.com/auth/classroom.coursework.me';
       function handleClientLoad() {
           // Load the API's client and auth2 modules.
           // Call the initClient function after the modules load.
@@ -20,8 +20,8 @@
           // Get API key and client ID from API Console.
           // 'scope' field specifies space-delimited list of access scopes.
           gapi.client.init({
-              'apiKey': 'YOUR_API_KEY',
-              'clientId': 'YOUR_CLIENT_ID',
+              'apiKey': 'AIzaSyAm8Kf28XBCjTLZlrXS0RbHWIDLZX2_PW0',
+              'clientId': '43222909467-rj3ovar4971hvqgvcg2ce01unepcojoe.apps.googleusercontent.com',
               'discoveryDocs': [discoveryUrl],
               'scope': SCOPE
           }).then(function () {
